@@ -1,4 +1,3 @@
-import React from 'react'
 import { getProducts } from '../data/Products'
 import ProductCard from '../components/ProductCard'
 import { Link } from 'react-router-dom'
