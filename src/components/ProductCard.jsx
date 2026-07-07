@@ -1,0 +1,20 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+function ProductCard({ product }) {
+  return (
+    <div className="product-card" key={product.id}>
+      <img src={product.image} alt={product.name} className="product-image" />
+      <div className="product-card-content">
+        <h3 className="product-card-name">{product.name}</h3>
+        <p className="product-card-price">${product.price}</p>
+        <div className="product-card-actions">
+          <Link className="btn btn-secondary">View details</Link>
+          <button className="btn btn-primary">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default ProductCard;
