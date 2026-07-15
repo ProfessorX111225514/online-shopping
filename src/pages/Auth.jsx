@@ -1,14 +1,14 @@
 import {Link} from "react-router-dom";
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import {useForm} from 'react-hook-form';
-import {AuthContext} from"../context/AuthContext";
+import { useAuth} from"../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Home from "./Home";
 
 function Auth() {
     const[mode, setMode] = useState("login")
     const {register, handleSubmit, formState: {errors}} = useForm();
-    const {signup,user,logout,login}=useContext(AuthContext)
+    const {signup,user,logout,login}=useAuth();
     const[error,setError]=useState(null);
     const navigate= useNavigate();
     function onSubmit(data){
@@ -27,14 +27,12 @@ function Auth() {
 
             setError(result.error)
         }
-        console.log(result);
     };
   return (
     <div className="page">
         <div className="container">
             <div className="auth-container">
-                {user && <p>User is logged in {user.email}</p>}
-                <button onClick={()=>logout()}>Logout</button>
+                
                 <h1 className="page-title">{mode ==="signup"?"Sign up":"Login"}</h1>
                 <form action="" className="auth-form" onSubmit={handleSubmit(onSubmit)}>
 
